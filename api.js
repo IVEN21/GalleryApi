@@ -34,11 +34,8 @@ app.listen(port, () => {
 });
 app.get("/",async(req,res)=>{
    
-  try {
-      const galleries = await GalleryModel.find();
-      res.send(galleries) 
-  } catch (error) {
-      res.json(error)
-  }
+ 
+      res.send("gallery center") 
+ 
 })
 
