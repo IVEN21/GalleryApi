@@ -14,12 +14,17 @@ galleryRoute.get("/",async(req,res)=>{
 
 //upload to database
 galleryRoute.post("/", async (req, res) => {
+  try {
     const clip = new GalleryModel({
       url: req.body.url,
       tags:req.body.tags
     });
     const addClip = await clip.save();
     res.json(addClip);
+  } catch (error) {
+    
+  }
+  
     
   });
 
