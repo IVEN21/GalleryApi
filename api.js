@@ -1,4 +1,5 @@
 //dependencies & modules
+const GalleryModel = require("./Models/GalleryModel")
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -31,7 +32,13 @@ let port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
-app.get("/", (req, res) => {
-  res.send("Gallery Api");
-});
+app.get("/",async(req,res)=>{
+   
+  try {
+      const galleries = await GalleryModel.find();
+      res.send(galleries) 
+  } catch (error) {
+      res.json(error)
+  }
+})
 
